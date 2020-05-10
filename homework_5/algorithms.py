@@ -515,9 +515,6 @@ def sgd_const_stepsize(filename, x_init, A, y, gamma,
         if indices_counter == indices_size:
             indices_counter = 0
             indices = randint.rvs(low=0, high=m, size=indices_size)
-        if bernoulli_counter == bernoulli_exp_size:
-            bernoulli_counter = 0
-            bernoulli_exp = randint.rvs(low=0, high=m, size=bernoulli_exp_size)
             
         #ваш код здесь
         
@@ -652,6 +649,12 @@ def l_svrg(filename, x_init, A, y, gamma,
     
     #метод
     for it in range(int(m*S/batch_size)):
+        if indices_counter == indices_size:
+            indices_counter = 0
+            indices = randint.rvs(low=0, high=m, size=indices_size)
+        if bernoulli_counter == bernoulli_exp_size:
+            bernoulli_counter = 0
+            bernoulli_exp = bernoulli.rvs(p, size=bernoulli_exp_size)
         
         #ваш код здесь (возможно, ещё где-то придётся вставить код)
         
