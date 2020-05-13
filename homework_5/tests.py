@@ -25,7 +25,7 @@ def svrg_test(your_result):
     with open("dump/svrg_test.txt", 'rb') as file:
         true_result = pickle.load(file)
     
-    if norm(true_result['last_iter'] - your_result['last_iter'] > 1e-6):
+    if norm(true_result['last_iter'] - your_result['last_iter']) > 1e-6:
         print("Некорректная последняя точка")
         return 1
     for idx, item in enumerate(your_result['func_vals']):
@@ -40,7 +40,7 @@ def sgd_const_test(your_result):
     with open("dump/sgd_const_test.txt", 'rb') as file:
         true_result = pickle.load(file)
     
-    if norm(true_result['last_iter'] - your_result['last_iter'] > 1e-6):
+    if norm(true_result['last_iter'] - your_result['last_iter']) > 1e-6:
         print("Некорректная последняя точка")
         return 1
     for idx, item in enumerate(your_result['func_vals']):
@@ -55,7 +55,7 @@ def sgd_decr_test(your_result):
     with open("dump/sgd_decr_test.txt", 'rb') as file:
         true_result = pickle.load(file)
     
-    if norm(true_result['last_iter'] - your_result['last_iter'] > 1e-6):
+    if norm(true_result['last_iter'] - your_result['last_iter']) > 1e-6:
         print("Некорректная последняя точка")
         return 1
     for idx, item in enumerate(your_result['func_vals']):
@@ -70,7 +70,7 @@ def l_svrg_test(your_result):
     with open("dump/l_svrg_test.txt", 'rb') as file:
         true_result = pickle.load(file)
     
-    if norm(true_result['last_iter'] - your_result['last_iter'] > 1e-6):
+    if norm(true_result['last_iter'] - your_result['last_iter']) > 1e-6:
         print("Некорректная последняя точка")
         return 1
     for idx, item in enumerate(your_result['func_vals']):
@@ -85,7 +85,7 @@ def saga_test(your_result):
     with open("dump/saga_test.txt", 'rb') as file:
         true_result = pickle.load(file)
     
-    if norm(true_result['last_iter'] - your_result['last_iter'] > 1e-6):
+    if norm(true_result['last_iter'] - your_result['last_iter']) > 1e-6:
         print("Некорректная последняя точка")
         return 1
     for idx, item in enumerate(your_result['func_vals']):
@@ -100,7 +100,7 @@ def prox_gd_test(your_result):
     with open("dump/prox_gd_test.txt", 'rb') as file:
         true_result = pickle.load(file)
     
-    if norm(true_result['last_iter'] - your_result['last_iter'] > 1e-6):
+    if norm(true_result['last_iter'] - your_result['last_iter']) > 1e-6:
         print("Некорректная последняя точка")
         return 1
     for idx, item in enumerate(your_result['func_vals']):
@@ -115,7 +115,7 @@ def fista_test(your_result):
     with open("dump/fista_test.txt", 'rb') as file:
         true_result = pickle.load(file)
     
-    if norm(true_result['last_iter'] - your_result['last_iter'] > 1e-6):
+    if norm(true_result['last_iter'] - your_result['last_iter']) > 1e-6:
         print("Некорректная последняя точка")
         return 1
     for idx, item in enumerate(your_result['func_vals']):
@@ -130,7 +130,7 @@ def gd_test(your_result):
     with open("dump/gd_test.txt", 'rb') as file:
         true_result = pickle.load(file)
     
-    if norm(true_result['last_iter'] - your_result['last_iter'] > 1e-6):
+    if norm(true_result['last_iter'] - your_result['last_iter']) > 1e-6:
         print("Некорректная последняя точка")
         return 1
     for idx, item in enumerate(your_result['func_vals']):
@@ -146,7 +146,7 @@ def sgd_ls_test(your_result):
     with open("dump/sgd_ls_test.txt", 'rb') as file:
         true_result = pickle.load(file)
     
-    if norm(true_result['last_iter'] - your_result['last_iter'] > 1e-6):
+    if norm(true_result['last_iter'] - your_result['last_iter']) > 1e-6:
         print("Некорректная последняя точка")
         return 1
     for idx, item in enumerate(your_result['func_vals']):
@@ -161,7 +161,7 @@ def svrg_ls_test(your_result):
     with open("dump/svrg_ls_test.txt", 'rb') as file:
         true_result = pickle.load(file)
     
-    if norm(true_result['last_iter'] - your_result['last_iter'] > 1e-6):
+    if norm(true_result['last_iter'] - your_result['last_iter']) > 1e-6:
         print("Некорректная последняя точка")
         return 1
     for idx, item in enumerate(your_result['func_vals']):
@@ -176,7 +176,7 @@ def sgd_star_ls_test(your_result):
     with open("dump/sgd_star_ls_test.txt", 'rb') as file:
         true_result = pickle.load(file)
     
-    if norm(true_result['last_iter'] - your_result['last_iter'] > 1e-6):
+    if norm(true_result['last_iter'] - your_result['last_iter']) > 1e-6:
         print("Некорректная последняя точка")
         return 1
     for idx, item in enumerate(your_result['func_vals']):
@@ -191,7 +191,7 @@ def slcm_ls_test(your_result):
     with open("dump/slcm_ls_test.txt", 'rb') as file:
         true_result = pickle.load(file)
     
-    if norm(true_result['last_iter'] - your_result['last_iter'] > 1e-6):
+    if norm(true_result['last_iter'] - your_result['last_iter']) > 1e-6:
         print("Некорректная последняя точка")
         return 1
     for idx, item in enumerate(your_result['func_vals']):
