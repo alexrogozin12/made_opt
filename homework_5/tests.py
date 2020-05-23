@@ -115,11 +115,11 @@ def fista_test(your_result):
     with open("dump/fista_test.txt", 'rb') as file:
         true_result = pickle.load(file)
     
-    if norm(true_result['last_iter'] - your_result['last_iter']) > 1e-6:
+    if norm(true_result['last_iter'] - your_result['last_iter']) > 1e-3:
         print("Некорректная последняя точка")
         return 1
     for idx, item in enumerate(your_result['func_vals']):
-        if abs(true_result['func_vals'][idx] - item) > 1e-6:
+        if abs(true_result['func_vals'][idx] - item) > 1e-3:
             print("Некорректное сохранённое значение в массиве значений на позиции ", idx)
             return 1
     
