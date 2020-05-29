@@ -145,69 +145,6 @@ class TestNewton(unittest.TestCase):
         check_equal_histories(opt.hist, TRUE_HISTORY)
 
 
-
-class TestBFGS(unittest.TestCase):
-    # Define a simple quadratic function for testing
-    A = np.array([[1, 0], [0, 2]], dtype=np.float64)
-    b = np.array([1, 6], dtype=np.float64)
-    oracle = QuadraticOracle(A, b)
-
-    f_star = -9.5
-    x0 = np.array([0, 0], dtype=np.float64)
-    # For this func |nabla f(x)| < tol ensures |f(x) - f(x^*)| < tol^2
-
-    def test_default(self):
-        """Check if everything works correctly with default parameters."""
-        opt = BFGS(self.oracle, self.x0)
-        opt.run()
-
-    def test_tolerance(self):
-        """Check if argument `tolerance` is supported."""
-        BFGS(self.oracle, self.x0, tolerance=1e-5)
-
-    def test_max_iter(self):
-        """Check if argument `max_iter` is supported."""
-        opt = BFGS(self.oracle, self.x0)
-        opt.run(max_iter=0)
-
-    def test_line_search_options(self):
-        """Check if argument `line_search_options` is supported."""
-        BFGS(self.oracle, self.x0, line_search_options={'method': 'Wolfe', 'c1': 1e-4, 'c2': 0.9})
-
-    def test_quality(self):
-        opt = BFGS(self.oracle, self.x0, tolerance=1e-5)
-        opt.run(5)
-        x_min = opt.hist['x_star']
-        # x_min, message, _ = LBFGS(self.oracle, self.x0, tolerance=1e-5)
-        f_min = self.oracle.func(x_min)
-
-        g_k_norm_sqr = norm(self.A.dot(x_min) - self.b, 2)**2
-        g_0_norm_sqr = norm(self.A.dot(self.x0) - self.b, 2)**2
-        self.assertLessEqual(g_k_norm_sqr, 1e-5 * g_0_norm_sqr)
-        self.assertLessEqual(abs(f_min - self.f_star), 1e-5 * g_0_norm_sqr)
-
-    def test_history(self):
-        x0 = -np.array([1.3, 2.7])
-        opt = BFGS(self.oracle, x0, line_search_options={'method': 'Constant', 'c': 1.0}, tolerance=1e-6)
-        opt.run(10)
-        x_min = opt.hist['x_star']
-        func_steps = [25.635000000000005,
-                      22.99,
-                      -9.48707349065929,
-                      -9.5]
-        grad_norm_steps = [11.629703349613008,
-                           11.4,
-                           0.22738961577617722,
-                           0.0]
-        time_steps = [0.0] * 4  # Dummy values
-        x_steps = [np.array([-1.3, -2.7]),
-                   np.array([1.0, 8.7]),
-                   np.array([1.0, 2.88630519]),
-                   np.array([1., 3.])]
-        true_history = dict(grad_norm=grad_norm_steps, time=time_steps, x=x_steps, func=func_steps)
-        check_equal_histories(opt.hist, true_history)
-
-
 class TestLBFGS(unittest.TestCase):
     # Define a simple quadratic function for testing
     A = np.array([[1, 0], [0, 2]])
