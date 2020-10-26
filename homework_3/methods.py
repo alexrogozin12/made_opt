@@ -79,6 +79,16 @@ class LineSearchTool(object):
             # your code here
 
 
+def get_line_search_tool(line_search_options=None):
+    if line_search_options:
+        if type(line_search_options) is LineSearchTool:
+            return line_search_options
+        else:
+            return LineSearchTool.from_dict(line_search_options)
+    else:
+        return LineSearchTool()
+
+
 class GradientDescent(object):
     """
     Gradient descent optimization algorithm.
