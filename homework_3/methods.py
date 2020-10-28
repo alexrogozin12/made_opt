@@ -124,6 +124,7 @@ class GradientDescent(object):
             - self.hist['func'] : list of function values f(x_k) on every step of the algorithm
             - self.hist['grad_norm'] : list of values Euclidian norms ||g(x_k)|| of the gradient on every step of the algorithm
             - self.hist['x'] : list of np.arrays, containing the trajectory of the algorithm. ONLY STORE IF x.size <= 2
+            - self.hist['x_star']: np.array containing x at last iteration
 
         """
         # your code here
