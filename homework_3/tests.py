@@ -245,16 +245,13 @@ def check_prototype(method):
     def check_result(method, max_iter=10000, x0=np.ones(2), history=None):
         method.run(max_iter)
         result = method.hist
-        eq_(len(result), 4)
         ok_(np.allclose(result['x_star'], x0))
 
     check_result(method(oracle, x0))
     check_result(method(oracle, x0, 1e-3), 10)
     check_result(method(oracle, x0, 1e-3, {'method': 'Constant', 'c': 1.0}), 10)
-    check_result(method(oracle, x0, 1e-3, {'method': 'Constant', 'c': 1.0},
-                        trace=True), 10, history=HISTORY)
-    check_result(method(oracle, x0, 1e-3, 
-                        line_search_options={'method': 'Constant', 'c': 1.0}), 
+    check_result(method(oracle, x0, 1e-3, {'method': 'Constant', 'c': 1.0}), 10, history=HISTORY)
+    check_result(method(oracle, x0, 1e-3, line_search_options={'method': 'Constant', 'c': 1.0}), 
                  10, history=HISTORY)
     check_result(method(oracle, x0))
     check_result(method(oracle, x0, tolerance=1e-8), history=HISTORY)
